@@ -16,7 +16,7 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: "radial-gradient(circle at 75% 40%, rgba(197,242,92,0.22), transparent 45%), #0a0c0c",
+          background: "radial-gradient(circle at 75% 40%, rgba(185,166,255,0.22), transparent 45%), #0a0c0c",
           color: "#ecebe4",
           fontFamily: "sans-serif",
         }}
@@ -25,7 +25,7 @@ export default function OpengraphImage() {
         <div style={{ display: "flex", fontSize: 84, lineHeight: 1, letterSpacing: -3, maxWidth: 900 }}>
           Hardware that senses, decides and acts.
         </div>
-        <div style={{ display: "flex", fontSize: 28, color: "#c5f25c" }}>Embedded design · IoT firmware · Radon Sentinel</div>
+        <div style={{ display: "flex", fontSize: 28, color: "#b9a6ff" }}>Embedded design · IoT firmware · Radon Sentinel</div>
       </div>
     ),
     size,

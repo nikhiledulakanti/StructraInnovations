@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Motion } from "@/components/motion/Motion";
-import { Cta, PageHero } from "@/components/ui/Blocks";
+import { Cta, PageHero, SectionHead } from "@/components/ui/Blocks";
 import { Arrow } from "@/components/ui/Arrow";
 import { SentinelDiagram } from "@/components/ui/SentinelDiagram";
-import { products } from "@/content/site";
+import { products, systemFamily } from "@/content/site";
+import { Txt } from "@/components/ui/Txt";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -40,6 +41,26 @@ export default function ProductsPage() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <SectionHead
+            eyebrow="The STRUCTRA system"
+            title="Four more devices in the family."
+            lede="Each system shares the same hardware and firmware foundations as Radon Sentinel."
+          />
+          <ul className="card-grid" data-stagger>
+            {systemFamily.map((p) => (
+              <li className="card glass system-card" data-accent={p.accent} key={p.name}>
+                <span className="eyebrow">STRUCTRA system</span>
+                <h3>{p.name}</h3>
+                <p>
+                  <Txt text={p.note} />
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
       <Cta

@@ -7,7 +7,8 @@
   --ink-faint: #6f746d;
   --line: rgba(236, 235, 228, 0.12);
   --line-strong: rgba(236, 235, 228, 0.28);
-  --signal: #c5f25c; /* safe / clean air */
+  --signal: #b9a6ff; /* brand lavender; also "clean air" in the hero demo */
+  --signal-rgb: 185, 166, 255;
   --warn: #ffb547; /* radon present */
   --danger: #ff6b5b;
   --glass: rgba(20, 25, 25, 0.55);
@@ -356,6 +357,12 @@ body::after {
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
 }
+.btn--glass::before {
+  background: linear-gradient(135deg, rgba(var(--signal-rgb), 0.95), rgba(var(--signal-rgb), 0.7));
+}
+.btn--glass {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 30px -18px rgba(var(--signal-rgb), 0.6);
+}
 .btn[disabled],
 .btn[aria-disabled="true"] {
   opacity: 0.6;
@@ -442,15 +449,15 @@ body::after {
     display: none;
   }
 }
-.menu-toggle span {
+.menu-toggle .menu-icon {
   position: relative;
   width: 16px;
   height: 1px;
   background: currentColor;
   transition: background 0.3s;
 }
-.menu-toggle span::before,
-.menu-toggle span::after {
+.menu-toggle .menu-icon::before,
+.menu-toggle .menu-icon::after {
   content: "";
   position: absolute;
   left: 0;
@@ -459,8 +466,8 @@ body::after {
   background: currentColor;
   transition: transform 0.4s var(--ease);
 }
-.menu-toggle span::before { transform: translateY(-5px); }
-.menu-toggle span::after { transform: translateY(5px); }
+.menu-toggle .menu-icon::before { transform: translateY(-5px); }
+.menu-toggle .menu-icon::after { transform: translateY(5px); }
 .menu-toggle[aria-expanded="true"] span { background: transparent; }
 .menu-toggle[aria-expanded="true"] span::before { transform: rotate(45deg); }
 .menu-toggle[aria-expanded="true"] span::after { transform: rotate(-45deg); }
@@ -517,6 +524,15 @@ body::after {
   inset: 0;
   z-index: 0;
 }
+@media (max-width: 879px) {
+  .hero {
+    padding-top: calc(min(52svh, 440px) + 8px);
+  }
+  .hero__canvas {
+    bottom: auto;
+    height: min(60svh, 500px);
+  }
+}
 .hero__canvas canvas {
   width: 100% !important;
   height: 100% !important;
@@ -526,7 +542,7 @@ body::after {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(40% 45% at 62% 42%, rgba(197, 242, 92, 0.12), transparent 70%),
+    radial-gradient(40% 45% at 62% 42%, rgba(var(--signal-rgb), 0.12), transparent 70%),
     radial-gradient(30% 35% at 38% 60%, rgba(255, 181, 71, 0.08), transparent 70%);
 }
 .hero__shade {
@@ -630,7 +646,7 @@ body::after {
 .hold-btn__fill {
   position: absolute;
   inset: 0;
-  background: rgba(197, 242, 92, 0.18);
+  background: rgba(var(--signal-rgb), 0.18);
   transform-origin: left;
   transform: scaleX(var(--hold, 0));
 }
@@ -911,7 +927,8 @@ body::after {
   .founder { grid-template-columns: 0.8fr 1.2fr; }
 }
 .founder__portrait {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
+  max-height: 420px;
   display: grid;
   place-items: center;
   text-align: center;
@@ -977,7 +994,7 @@ body::after {
   right: -15%;
   top: -40%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(197, 242, 92, 0.18), transparent 65%);
+  background: radial-gradient(circle, rgba(var(--signal-rgb), 0.18), transparent 65%);
   pointer-events: none;
 }
 
@@ -1147,8 +1164,8 @@ body::after {
 .field select:focus-visible {
   outline: none;
   border-color: var(--signal);
-  background: rgba(197, 242, 92, 0.04);
-  box-shadow: 0 0 0 3px rgba(197, 242, 92, 0.18);
+  background: rgba(var(--signal-rgb), 0.04);
+  box-shadow: 0 0 0 3px rgba(var(--signal-rgb), 0.18);
 }
 .field[data-invalid="true"] input,
 .field[data-invalid="true"] textarea,
@@ -1356,3 +1373,16 @@ body::after {
     animation: none;
   }
 }
+
+/* ───────────── System family ───────────── */
+.system-card {
+  --accent: var(--signal);
+  border-top: 2px solid var(--accent);
+}
+.system-card .eyebrow::before {
+  background: var(--accent);
+}
+.system-card[data-accent="mesh"] { --accent: #7cc4ff; }
+.system-card[data-accent="power"] { --accent: #ffb547; }
+.system-card[data-accent="ble"] { --accent: #6fe0c4; }
+.system-card[data-accent="test"] { --accent: #ff8fb1; }

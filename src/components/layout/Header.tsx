@@ -76,7 +76,7 @@ export function Header() {
                 aria-controls="mobile-menu"
                 onClick={() => setOpen((v) => !v)}
               >
-                <span />
+                <span className="menu-icon" aria-hidden="true" />
                 <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
               </button>
             </div>

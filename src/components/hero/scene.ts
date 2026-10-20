@@ -16,7 +16,7 @@ export type SceneHandle = {
 };
 
 const WARN = new THREE.Color("#ffb547");
-const SIGNAL = new THREE.Color("#c5f25c");
+const SIGNAL = new THREE.Color("#b9a6ff");
 
 const particleVertex = /* glsl */ `
   uniform float uTime;
@@ -91,9 +91,11 @@ export function createScene(container: HTMLElement, { reducedMotion, onPurify }:
   const coreMat = new THREE.MeshPhysicalMaterial({
     color: 0xffffff,
     metalness: 0,
-    roughness: 0.08,
+    roughness: 0.22,
     transmission: 1,
-    thickness: 1.4,
+    thickness: 0.8,
+    attenuationColor: new THREE.Color("#cfc4ff"),
+    attenuationDistance: 2.5,
     ior: 1.45,
     iridescence: 0.6,
     iridescenceIOR: 1.3,
@@ -107,7 +109,7 @@ export function createScene(container: HTMLElement, { reducedMotion, onPurify }:
 
   // Glowing nucleus seen through the glass
   const nucleusMat = new THREE.MeshBasicMaterial({ color: WARN.clone() });
-  const nucleus = new THREE.Mesh(new THREE.IcosahedronGeometry(0.38, 2), nucleusMat);
+  const nucleus = new THREE.Mesh(new THREE.IcosahedronGeometry(0.24, 2), nucleusMat);
   rig.add(nucleus);
 
   // Wire shell
@@ -181,10 +183,10 @@ export function createScene(container: HTMLElement, { reducedMotion, onPurify }:
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     // keep the core comfortably framed on narrow screens
-    camera.position.z = w < 720 ? 13 : 10;
-    // sit the core right of centre on wide screens, above the copy on narrow ones
+    camera.position.z = w < 720 ? 12.5 : 10;
+    // right of centre on wide screens; on narrow ones the canvas only covers the area above the copy
     rig.position.x = w >= 880 ? 1.6 : 0;
-    rig.position.y = w >= 880 ? 0.35 : 1.1;
+    rig.position.y = w >= 880 ? 0.35 : 0;
     camera.updateProjectionMatrix();
   };
   const ro = new ResizeObserver(resize);

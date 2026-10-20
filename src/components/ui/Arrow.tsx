@@ -10,7 +10,7 @@ export function Logo() {
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
       <path d="M16 2 28 9v14l-12 7L4 23V9z" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M16 9.5 22 13v6l-6 3.5-6-3.5v-6z" fill="#c5f25c" />
+      <path d="M16 9.5 22 13v6l-6 3.5-6-3.5v-6z" fill="#b9a6ff" />
     </svg>
   );
 }

@@ -225,6 +225,15 @@ export const products: Product[] = [
   },
 ];
 
+// The wider STRUCTRA system family from the founder's earlier design work. Names are
+// confirmed; descriptions and status still need the founder's input.
+export const systemFamily = [
+  { name: "Mesh Gateway", accent: "mesh", note: `${FOUNDER_INPUT}: one line on what it connects and for whom.` },
+  { name: "Power Monitor", accent: "power", note: `${FOUNDER_INPUT}: one line on what it measures and why it matters.` },
+  { name: "BLE Analyzer", accent: "ble", note: `${FOUNDER_INPUT}: one line on who uses it and what it reveals.` },
+  { name: "Test Panel", accent: "test", note: `${FOUNDER_INPUT}: one line on what it tests and the time it saves.` },
+];
+
 export const workProcess = [
   {
     step: "01",

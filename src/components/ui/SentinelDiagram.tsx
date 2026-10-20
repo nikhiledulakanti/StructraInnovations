@@ -10,7 +10,7 @@ export function SentinelDiagram() {
       <defs>
         <linearGradient id="flow" x1="0" x2="1">
           <stop offset="0" stopColor="#ffb547" />
-          <stop offset="1" stopColor="#c5f25c" />
+          <stop offset="1" stopColor="#b9a6ff" />
         </linearGradient>
       </defs>
       <g fill="none" stroke="rgba(236,235,228,0.28)">
@@ -34,7 +34,7 @@ export function SentinelDiagram() {
         <text x="350" y="202">PHONE</text>
         <text x="350" y="218">ALERT</text>
       </g>
-      <g fill="#c5f25c">
+      <g fill="#b9a6ff">
         <circle cx="210" cy="122" r="4" />
       </g>
       <g fill="#ffb547">
